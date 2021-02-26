@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminUser">
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="414dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="24dp"
+        android:background="#16931B"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="@string/easy_vote"
+        android:textColor="#090808"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/adminName"
+        android:layout_width="320dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center|left"
+        android:text="@string/full_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
+
+    <TextView
+        android:id="@+id/adminNameDB"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#090808"
+        android:background="#ECEFF1"
+        android:gravity="center|left"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@id/adminName"
+        app:layout_constraintStart_toStartOf="@id/adminName"
+        app:layout_constraintTop_toBottomOf="@+id/adminName" />
+
+    <TextView
+        android:id="@+id/emailAdmin"
+        android:layout_width="320dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center|left"
+        android:text="@string/email"
+        app:layout_constraintEnd_toEndOf="@id/adminName"
+        app:layout_constraintStart_toStartOf="@id/adminName"
+        app:layout_constraintTop_toBottomOf="@+id/adminNameDB" />
+
+    <TextView
+        android:id="@+id/adminEmailDB"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#090808"
+        android:background="#ECEFF1"
+        android:gravity="center|left"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@id/adminName"
+        app:layout_constraintStart_toStartOf="@id/adminName"
+        app:layout_constraintTop_toBottomOf="@+id/emailAdmin" />
+
+    <Button
+        android:id="@+id/adminVoteDet"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        android:text="@string/vote_details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/logOutAdmin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/adminName"
+        app:layout_constraintTop_toBottomOf="@+id/adminEmailDB"
+        app:layout_constraintVertical_bias="0.009" />
+
+    <Button
+        android:id="@+id/logOutAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/adminName"
+        app:layout_constraintTop_toBottomOf="@+id/adminEmailDB"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

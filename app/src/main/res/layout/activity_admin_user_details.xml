@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminVoteDetails">
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="414dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="24dp"
+        android:background="#16931B"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="@string/easy_vote"
+        android:textColor="#090808"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/viewVotersList"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        android:text="@string/view_voters"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
+
+    <Button
+        android:id="@+id/updateVoterDetails"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/update_voters"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        app:layout_constraintEnd_toEndOf="@id/viewVotersList"
+        app:layout_constraintStart_toStartOf="@id/viewVotersList"
+        app:layout_constraintTop_toBottomOf="@+id/viewVotersList" />
+
+    <Button
+        android:id="@+id/viewCandidateList"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/view_candidates"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        app:layout_constraintEnd_toEndOf="@id/viewVotersList"
+        app:layout_constraintStart_toStartOf="@id/viewVotersList"
+        app:layout_constraintTop_toBottomOf="@+id/updateVoterDetails" />
+
+    <Button
+        android:id="@+id/updateCandidateList"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/update_candidate"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewVotersList"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/viewVotersList"
+        app:layout_constraintTop_toBottomOf="@+id/viewCandidateList"
+        app:layout_constraintVertical_bias="0.009" />
+
+    <Button
+        android:id="@+id/logoutAdmin"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/logout"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewVotersList"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="@id/viewVotersList"
+        app:layout_constraintTop_toBottomOf="@+id/updateCandidateList"
+        app:layout_constraintVertical_bias="0.007" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

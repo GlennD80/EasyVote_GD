@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "672795834537",
+    "firebase_url": "https://easyvote-fc264-default-rtdb.firebaseio.com",
+    "project_id": "easyvote-fc264",
+    "storage_bucket": "easyvote-fc264.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672795834537:android:2b64b49a28c92321c411b8",
+        "android_client_info": {
+          "package_name": "com.example.easyvote_gd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672795834537-b6uco5rbcup5bhsacl09302uv1m53pvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgqphguRYgD0uUrncd8nSG43hS3kzgXjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672795834537-b6uco5rbcup5bhsacl09302uv1m53pvb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
