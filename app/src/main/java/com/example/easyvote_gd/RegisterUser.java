@@ -26,7 +26,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     DatabaseReference reference;
 
     private TextView banner, registerUser;
-    private EditText editTextFullName, editTextAge, editTextConst, editTextEmail,editTextPassword;
+    private EditText editTextFullName, editTextAge, editTextAddress, editTextEmail,editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
         editTextFullName = (EditText) findViewById(R.id.regUserName);
         editTextAge = (EditText) findViewById(R.id.regUserAge);
-        editTextConst = (EditText) findViewById(R.id.regUserConst);
+        editTextAddress = (EditText) findViewById(R.id.regUserConst);
         editTextPassword = (EditText) findViewById(R.id.regUserPassword);
         editTextEmail = (EditText) findViewById(R.id.regUserEmail);
 
@@ -67,7 +67,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullName.getText().toString().trim();
         String age = editTextAge.getText().toString().trim();
-        String constituency = editTextConst.getText().toString().trim();
+        String address = editTextAddress.getText().toString().trim();
 
         if(fullName.isEmpty()){
             editTextFullName.setError("Full Name is Required");
@@ -93,9 +93,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if(constituency.isEmpty()){
-            editTextConst.setError("Constituency is Required");
-            editTextConst.requestFocus();
+        if(address.isEmpty()){
+            editTextAddress.setError("Address is Required");
+            editTextAddress.requestFocus();
             return;
         }
 
@@ -115,7 +115,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    User user = new User(fullName, age, email, constituency);
+                    User user = new User(address, age, email, fullName);
 
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

@@ -12,10 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyVote_GD">
-        <activity android:name=".UpdateCandidateList"></activity>
+        <activity android:name=".UpdateVoterDetails2"
+            android:parentActivityName=".AdminVoteDetails" />
+        <activity android:name=".UpdateCandidateList"
+            android:parentActivityName=".AdminVoteDetails" />
         <activity android:name=".CandidateList" />
-        <activity android:name=".UpdateVoterDetails" />
-        <activity android:name=".VoterList"
+        <activity
+            android:name=".UpdateVoterDetails"
+            android:parentActivityName=".AdminVoteDetails" />
+        <activity
+            android:name=".VoterList"
             android:parentActivityName=".AdminVoteDetails" />
         <activity
             android:name=".AdminUser"

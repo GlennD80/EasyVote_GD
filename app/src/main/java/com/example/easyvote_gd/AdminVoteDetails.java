@@ -59,7 +59,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         updateVoterDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, UpdateVoterDetails.class));
+                startActivity(new Intent(AdminVoteDetails.this, UpdateVoterDetails2.class));
             }
         });
 
@@ -77,7 +77,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         updateCandidateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, CandidateList.class));
+                startActivity(new Intent(AdminVoteDetails.this, UpdateCandidateList.class));
             }
         });
 

@@ -36,4 +36,18 @@
     <string name="fullname">name</string>
     <string name="ExportList">Button</string>
     <string name="export_list">Export List</string>
+    <string name="update_details">Update Details</string>
+    <string name="email_cannot_be_updated">Email cannot be updated</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_full_name">Enter Full Name</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="voter_details">Voter Details</string>
+    <string name="email_cannot_be_updated_register_again_with_new_email">Email cannot be updated, register again with new email.</string>
+    <string name="update_voter_details">Update Voter Details</string>
+    <string name="add_a_candidate">Add a Candidate</string>
+    <string name="candidate_full_name">Candidate Full Name</string>
+    <string name="candidate_party">Candidate Party</string>
+    <string name="candidate_location">Candidate Location</string>
+    <string name="add_new_candidate">Add New Candidate</string>
 </resources>

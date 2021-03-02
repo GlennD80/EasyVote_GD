@@ -97,7 +97,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="16dp"
         android:gravity="center|left"
-        android:text="@string/constituency1"
+        android:text="Address:"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_DB" />

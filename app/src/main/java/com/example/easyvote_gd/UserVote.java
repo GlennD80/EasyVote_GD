@@ -29,7 +29,7 @@ public class UserVote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_vote);
 
-/*        Toolbar toolbar = findViewById(R.id.toolbar);
+/*      Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 

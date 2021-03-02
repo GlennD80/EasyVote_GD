@@ -48,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         final TextView fullNameTextView = (TextView) findViewById(R.id.fullName_DB);
         final TextView emailTextView = (TextView) findViewById(R.id.email_DB);
-        final TextView constTextView = (TextView) findViewById(R.id.const_DB);
+        final TextView addressTextView = (TextView) findViewById(R.id.const_DB);
         final TextView ageTextView = (TextView) findViewById(R.id.age_DB);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -59,13 +59,13 @@ public class ProfileActivity extends AppCompatActivity {
                 if(userProfile != null) {
                     String fullName = userProfile.fullName;
                     String email = userProfile.email;
-                    String constituency = userProfile.constituency;
+                    String address = userProfile.address;
                     String age = userProfile.age;
 
                     fullNameTextView.setText(fullName);
                     emailTextView.setText(email);
                     ageTextView.setText(age);
-                    constTextView.setText(constituency);
+                    addressTextView.setText(address);
                 }
             }
 

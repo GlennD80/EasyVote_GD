@@ -2,23 +2,23 @@ package com.example.easyvote_gd;
 
 public class User {
 
-    public String fullName, age, email, constituency;
+    public String fullName, age, address, email;
 
     public User(){
     }
 
-    public User(String fullName, String age, String email, String constituency){
-        this.fullName = fullName;
-        this.age = age;
+    public User(String address, String age, String email, String fullName){
+        this.address = address;
         this.email = email;
-        this.constituency = constituency;
+        this.age = age;
+        this.fullName = fullName;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) {
+        this.address = address;
     }
     public String getAge() {
         return age;
@@ -32,12 +32,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getConstituency() {
-        return constituency;
-    }
-    public void setConstituency(String constituency) {
-        this.constituency = constituency;
-    }
+
 }
 
 

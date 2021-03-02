@@ -6,23 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".VoterList">
 
-    <AutoCompleteTextView
-        android:id="@+id/searchList"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginLeft="35dp"
-        android:background="#ECEFF1"
-        android:padding="10dp"
-        android:drawableLeft="@drawable/ic_baseline_search_24"
-        android:layout_marginTop="10dp"></AutoCompleteTextView>
-
     <Button
         android:id="@+id/exportList"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="30dp"
         android:text="@string/export_list"
@@ -38,8 +27,7 @@
             android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="120dp">
-        </ListView>
+            android:layout_marginTop="80dp"></ListView>
 
     </LinearLayout>
 

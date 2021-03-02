@@ -6,4 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".UpdateCandidateList">
 
+    <TextView
+        android:id="@+id/add_Candidate_Txt"
+        android:layout_width="342dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/add_a_candidate"
+        android:textColor="#090808"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/add_Candidate_Name"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/candidate_full_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Txt"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/add_Candidate_Party"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/candidate_party"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Name" />
+
+    <EditText
+        android:id="@+id/add_Candidate_Location"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/candidate_location"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Party" />
+
+    <Button
+        android:id="@+id/add_Candidate_Btn"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/add_new_candidate"
+        android:textColor="#FBFBFB"
+        app:backgroundTint="#716E6E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Location" />
 </androidx.constraintlayout.widget.ConstraintLayout>
