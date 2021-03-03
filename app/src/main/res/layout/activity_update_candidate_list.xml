@@ -24,13 +24,13 @@
         android:layout_width="330dp"
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/candidate_full_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Txt"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Txt" />
 
     <EditText
         android:id="@+id/add_Candidate_Party"
@@ -67,7 +67,20 @@
         android:text="@string/add_new_candidate"
         android:textColor="#FBFBFB"
         app:backgroundTint="#716E6E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/add_Candidate_Txt"
+        app:layout_constraintStart_toStartOf="@id/add_Candidate_Txt"
+        app:layout_constraintTop_toBottomOf="@+id/imageCandidate"
+        app:layout_constraintVertical_bias="0.153" />
+
+    <ImageView
+        android:id="@+id/imageCandidate"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="40dp"
+        android:onClick="handleImageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Location" />
+        app:layout_constraintTop_toBottomOf="@+id/add_Candidate_Location"
+        app:srcCompat="@drawable/cam" />
 </androidx.constraintlayout.widget.ConstraintLayout>
