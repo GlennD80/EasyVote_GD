@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.easyvote_gd">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,9 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyVote_GD">
-        <activity android:name=".UpdateVoterDetails2"
+        <activity android:name=".ViewCandidateVotes"
             android:parentActivityName=".AdminVoteDetails" />
-        <activity android:name=".UpdateCandidateList"
+        <activity
+            android:name=".UpdateVoterDetails2"
+            android:parentActivityName=".AdminVoteDetails" />
+        <activity
+            android:name=".UpdateCandidateList"
             android:parentActivityName=".AdminVoteDetails" />
         <activity android:name=".CandidateList" />
         <activity
@@ -49,6 +54,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

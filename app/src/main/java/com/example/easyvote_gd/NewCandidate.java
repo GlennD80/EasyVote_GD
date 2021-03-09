@@ -1,19 +1,25 @@
 package com.example.easyvote_gd;
 
+import android.widget.ImageView;
+
 public class NewCandidate {
 
     String newCandidateName;
     String newCandidateParty;
     String newCandidateLocation;
+    //ImageView newProfilePic;
 
     String name;
     String party;
     String location;
+    //ImageView profilePic;
 
+    //public NewCandidate(String name, String party, String location, String profilePic)
     public NewCandidate(String name, String party, String location) {
         this.name = name;
         this.party = party;
         this.location = location;
+        //this.profilePic = profilePic;
     }
 
     public String getName() {
@@ -39,4 +45,8 @@ public class NewCandidate {
     public void setLocation(String location) {
         this.location = location;
     }
+
+ /*  public ImageView getProfilePic() { return profilePic; }
+
+    public void setProfilePic(ImageView profilePic) { this.profilePic = profilePic; }*/
 }

@@ -19,6 +19,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
     private Button updateVoterDetails;
     private Button candidateList;
     private Button updateCandidateList;
+    private Button viewCandidateVotes;
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -78,6 +79,15 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminVoteDetails.this, UpdateCandidateList.class));
+            }
+        });
+
+        viewCandidateVotes = (Button) findViewById(R.id.candidateVotes);
+
+        viewCandidateVotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminVoteDetails.this, ViewCandidateVotes.class));
             }
         });
 

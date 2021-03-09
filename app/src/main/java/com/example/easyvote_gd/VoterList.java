@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -26,6 +27,7 @@ public class VoterList extends AppCompatActivity {
 
     ListView listView;
     User user;
+    Button exportUserList;
 
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
@@ -41,7 +43,7 @@ public class VoterList extends AppCompatActivity {
         setContentView(R.layout.activity_voter_list);
 
         txtSearch = (AutoCompleteTextView) findViewById(R.id.searchList);
-
+        exportUserList = (Button) findViewById(R.id.exportList);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -80,6 +82,14 @@ public class VoterList extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+    }
+
+    public void export (View view) {
 
     }
 }

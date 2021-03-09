@@ -50,4 +50,6 @@
     <string name="candidate_location">Candidate Location</string>
     <string name="add_new_candidate">Add New Candidate</string>
     <string name="todo">TODO</string>
+    <string name="view_candidate_votes">View Candidate Votes</string>
+    <string name="update_vote_count">Update Vote Count</string>
 </resources>

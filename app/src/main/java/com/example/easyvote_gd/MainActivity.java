@@ -142,14 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         });
 
 
-
-
-                        //startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                        //startActivity(new Intent(MainActivity.this, AdminUser.class));
-
-
-
-
                     } else {
                         user.sendEmailVerification();
                         Toast.makeText(MainActivity.this, "Check your email verification", Toast.LENGTH_LONG).show();

@@ -29,6 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.UUID;
 
 public class UpdateCandidateList extends AppCompatActivity {
 
@@ -40,6 +41,7 @@ public class UpdateCandidateList extends AppCompatActivity {
     int TAKE_IMAGE_CODE = 10001;
 
     DatabaseReference reference;
+    DatabaseReference reference1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,6 @@ public class UpdateCandidateList extends AppCompatActivity {
                 insertNewCandidate();
             }
         });
-
     }
 
     private void insertNewCandidate() {
@@ -75,7 +76,7 @@ public class UpdateCandidateList extends AppCompatActivity {
 
         reference.push().setValue(newCandidate);
 
-        Toast.makeText(UpdateCandidateList.this, "New Candidate has been inserted", Toast.LENGTH_LONG).show();
+        //Toast.makeText(UpdateCandidateList.this, "New Candidate has been inserted", Toast.LENGTH_LONG).show();
     }
 
     public void handleImageClick(View view) {
@@ -100,14 +101,20 @@ public class UpdateCandidateList extends AppCompatActivity {
         }
     }
 
+    final String randomKey = UUID.randomUUID().toString();
+
     private void handleUpload(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
+        StorageReference reference = FirebaseStorage.getInstance().getReference().child("images/" + randomKey);
+
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        StorageReference reference = FirebaseStorage.getInstance().getReference()
-                .child("name")
-                .child(uid + ".jpeg");
+        reference1 = FirebaseDatabase.getInstance().getReference().child("Profiles")
+                .child(uid).push();
+               //child("profilePic").push();
+
+
 
         reference.putBytes(baos.toByteArray())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -121,7 +128,6 @@ public class UpdateCandidateList extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
     }
 
     private void getDownloadUrl (StorageReference reference) {

@@ -15,6 +15,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UpdateVoterDetails extends AppCompatActivity implements View.OnClickListener {
 
     private AutoCompleteTextView txtSearch;
@@ -38,12 +41,16 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
     DatabaseReference reference;
     FirebaseDatabase mFire;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_voter_details);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        mAuth = FirebaseAuth.getInstance();
+
+        //reference = FirebaseDatabase.getInstance().getReference().child("Users");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -102,27 +109,71 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
 
     //public String newFullName, newAddress, newAge;
 
-    private boolean isNameChanged() {
+/*    private boolean isNameChanged() {
         if(!newFullNameUpd.getText().toString().trim().equals(fullName)) {
             return true;
         }
         return false;
+    }*/
+
+/*    DatabaseReference dbRef=FirebaseDatabase.getInstance().getReference();
+        dbRef.child("Rooms").child(roomNumber);
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("room_price", updatedPrice);
+
+        dbRef.updateChildren(updates);*/
+
+    private boolean isNameChanged() {
+        if(!fullName.equals(newFullNameUpd.getText().toString())){
+            //reference.child("Users").child(email).child("name").setValue(newFullNameUpd.getText().toString().trim());
+
+/*            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    .child("name").setValue(newFullNameUpd.getText().toString().trim());*/
+
+/*            DatabaseReference dbRef=FirebaseDatabase.getInstance().getReference();
+            dbRef.child("Users").child(email);
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("name", newFullNameUpd.getText().toString());
+
+            dbRef.updateChildren(updates);*/
+
+
+            //fullName = newFullNameUpd.getText().toString();
+            return true;
+        }
+        return false;
     }
 
-    private boolean isAddressChanged() {
+/*    private boolean isAddressChanged() {
         if(!newAddressUpd.getText().toString().trim().equals(address)) {
             return true;
         }
         return false;
-    }
+    }*/
 
-    private boolean isAgeChanged() {
-        if(!newAgeUpd.getText().toString().trim().equals(age)) {
+    private boolean isAddressChanged() {
+        if(!address.equals(newAddressUpd.getText().toString())) {
             return true;
         }
         return false;
     }
 
+
+/*    private boolean isAgeChanged() {
+        if(!newAgeUpd.getText().toString().trim().equals(age)) {
+            return true;
+        }
+        return false;
+    }*/
+
+    private boolean isAgeChanged() {
+        if(!age.equals(newAgeUpd.getText().toString())) {
+
+            return true;
+        }
+        return false;
+    }
 
     public void onClick (View view) {
         updateUser();
