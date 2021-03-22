@@ -21,6 +21,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     ArrayList<String> addressList;
     ArrayList<String> ageList;
     ArrayList<String> emailList;
+    ArrayList<String> uidList;
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
 
@@ -47,10 +48,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                     String address = addressList.get(position);
                     String age = ageList.get(position);
                     String email = emailList.get(position);
+
+                    //String uid = uidList1().toString().trim();
+
+
                     extras.putString("name", fullName);
                     extras.putString("address", address);
                     extras.putString("age", age);
                     extras.putString("email", email);
+
+                    //extras.putString(uid);
+
                     intent.putExtras(extras);
                     context.startActivity(intent);
                 }

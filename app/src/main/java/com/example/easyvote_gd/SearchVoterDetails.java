@@ -7,14 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,17 +23,21 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UpdateVoterDetails2 extends AppCompatActivity {
+public class SearchVoterDetails extends AppCompatActivity {
+
+    public static SearchVoterDetails getInstance;
+    private  SearchVoterDetails instance;
 
     private AutoCompleteTextView search_edit_text;
     private RecyclerView recyclerView;
     private Button updateVoterDetailsBtn;
 
+    ArrayList<String> uidList1;
+
     ArrayList<String> fullNameList;
     ArrayList<String> addressList;
     ArrayList<String> ageList;
     ArrayList<String> emailList;
-    ArrayList<String> uid;
     SearchAdapter searchAdapter;
 
     DatabaseReference databaseReference;
@@ -66,7 +67,7 @@ public class UpdateVoterDetails2 extends AppCompatActivity {
         addressList = new ArrayList<>();
         ageList = new ArrayList<>();
         emailList = new ArrayList<>();
-        uid = new ArrayList<>();
+        uidList1 = new ArrayList<>();
 
         search_edit_text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -88,6 +89,7 @@ public class UpdateVoterDetails2 extends AppCompatActivity {
                     addressList.clear();
                     ageList.clear();
                     emailList.clear();
+                    uidList1.clear();
                     recyclerView.removeAllViews();
                 }
             }
@@ -104,28 +106,33 @@ public class UpdateVoterDetails2 extends AppCompatActivity {
                 addressList.clear();
                 ageList.clear();
                 emailList.clear();
+                uidList1.clear();
                 recyclerView.removeAllViews();
 
                 int counter = 0;
 
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    String uid = snapshot.getKey();
+                    //String uid = snapshot.getKey();
                     String fullName = snapshot.child("fullName").getValue(String.class);
                     String address = snapshot.child("address").getValue(String.class);
                     String age = snapshot.child("age").getValue(String.class);
                     String email = snapshot.child("email").getValue(String.class);
+
+                    String uid = snapshot.getKey();
 
                     if(fullName.toLowerCase().contains(searchedString.toLowerCase())){
                         fullNameList.add(fullName);
                         addressList.add(address);
                         ageList.add(age);
                         emailList.add(email);
+                        uidList1.add(uid);
                         counter++;
                     } else if (email.toLowerCase().contains(searchedString.toLowerCase())){
                         fullNameList.add(fullName);
                         addressList.add(address);
                         ageList.add(age);
                         emailList.add(email);
+                        uidList1.add(uid);
                         counter++;
                     }
 
@@ -133,7 +140,7 @@ public class UpdateVoterDetails2 extends AppCompatActivity {
                         break;
                 }
 
-                searchAdapter = new SearchAdapter(UpdateVoterDetails2.this, fullNameList, addressList, ageList, emailList);
+                searchAdapter = new SearchAdapter(SearchVoterDetails.this, fullNameList, addressList, ageList, emailList);
                 recyclerView.setAdapter(searchAdapter);
             }
 

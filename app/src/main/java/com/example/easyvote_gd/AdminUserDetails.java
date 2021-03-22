@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AdminUser extends AppCompatActivity {
+public class AdminUserDetails extends AppCompatActivity {
 
     private Button logoutAdmin;
     private Button voteAdmin;
@@ -38,7 +38,7 @@ public class AdminUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(AdminUser.this, MainActivity.class));
+                startActivity(new Intent(AdminUserDetails.this, MainActivity.class));
             }
         });
 
@@ -65,7 +65,7 @@ public class AdminUser extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AdminUser.this, "Error Getting User Details", Toast.LENGTH_LONG).show();
+                Toast.makeText(AdminUserDetails.this, "Error Getting User Details", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -74,7 +74,7 @@ public class AdminUser extends AppCompatActivity {
         voteAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminUser.this, AdminVoteDetails.class));
+                startActivity(new Intent(AdminUserDetails.this, AdminMainMenu.class));
             }
         });
 

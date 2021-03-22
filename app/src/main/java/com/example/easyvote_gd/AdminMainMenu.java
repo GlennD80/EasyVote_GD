@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
-public class AdminVoteDetails extends AppCompatActivity implements View.OnClickListener {
+public class AdminMainMenu extends AppCompatActivity implements View.OnClickListener {
 
     private Button logoutAdmin;
     private Button voterList;
@@ -42,7 +42,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(AdminVoteDetails.this, MainActivity.class));
+                startActivity(new Intent(AdminMainMenu.this, MainActivity.class));
             }
         });
 
@@ -51,7 +51,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         voterList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, VoterList.class));
+                startActivity(new Intent(AdminMainMenu.this, VoterList.class));
             }
         });
 
@@ -60,7 +60,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         updateVoterDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, UpdateVoterDetails2.class));
+                startActivity(new Intent(AdminMainMenu.this, SearchVoterDetails.class));
             }
         });
 
@@ -69,7 +69,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         candidateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, CandidateList.class));
+                startActivity(new Intent(AdminMainMenu.this, CandidateList.class));
             }
         });
 
@@ -78,7 +78,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         updateCandidateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, UpdateCandidateList.class));
+                startActivity(new Intent(AdminMainMenu.this, UpdateCandidateList.class));
             }
         });
 
@@ -87,7 +87,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
         viewCandidateVotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminVoteDetails.this, ViewCandidateVotes.class));
+                startActivity(new Intent(AdminMainMenu.this, ViewCandidateVotes.class));
             }
         });
 
@@ -97,7 +97,7 @@ public class AdminVoteDetails extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.banner:
-                startActivity(new Intent(this, AdminUser.class));
+                startActivity(new Intent(this, AdminUserDetails.class));
                 break;
         }
     }

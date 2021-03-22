@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if(snapshot.child("admin").exists()) {
                                     Boolean admin = snapshot.child("admin").getValue().toString().equals("true");
                                     if(admin) {
-                                        startActivity(new Intent(MainActivity.this, AdminUser.class));
+                                        startActivity(new Intent(MainActivity.this, AdminUserDetails.class));
                                         finish();
                                     } else {
                                         startActivity(new Intent(MainActivity.this, ProfileActivity.class));

@@ -27,15 +27,16 @@ public class ViewCandidateVotes extends AppCompatActivity {
 
     //FirebaseDatabase database;
     //DatabaseReference reference;
-    private Button updateVoteCount;
+    private Button updateVoteCountBtn;
 
     private FirebaseUser user;
     private FirebaseAuth auth;
     private String userID;
 
     ArrayList<PieEntry> candidates = new ArrayList<>();
+    PieChart pieChart;
 
-    DatabaseReference databaseReference;
+    DatabaseReference profiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,71 +45,26 @@ public class ViewCandidateVotes extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        updateVoteCount = findViewById(R.id.updateVotesChart);
+        updateVoteCountBtn = findViewById(R.id.updateVotesChart);
 
-        PieChart pieChart = findViewById(R.id.pieChart);
+        pieChart = findViewById(R.id.pieChart);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Profiles");
+        profiles = FirebaseDatabase.getInstance().getReference().child("Profiles");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                int voteCountVal;
-                String voteNameVal;
-
-                for(DataSnapshot candidate : dataSnapshot.getChildren()) {
-
-                    DataSnapshot voteCount = candidate.child("count");
-                    DataSnapshot candidateName = candidate.child("name");
-
-                    voteCountVal = Integer.parseInt(voteCount.getValue().toString());
-                    voteNameVal = candidateName.getValue().toString();
-
-                    candidates.add(new PieEntry(voteCountVal, voteNameVal));
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //getElectionResults();
-
-
-
-        ArrayList<PieEntry> candidates = new ArrayList<>();
-        candidates.add(new PieEntry(10, "Mary Lou MacDonald"));
-        candidates.add(new PieEntry(10, "Leo Varakar"));
-        candidates.add(new PieEntry(10, "Micheal Martin"));
-
-        PieDataSet pieDataSet = new PieDataSet(candidates, "Candidates");
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieDataSet.setValueTextColor(Color.BLACK);
-        pieDataSet.setValueTextSize(16f);
-
-        PieData pieData = new PieData(pieDataSet);
-
-        pieChart.setData(pieData);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Candidates");
-        pieChart.animate();
-
-        updateVoteCount.setOnClickListener(new View.OnClickListener() {
+        updateVoteCountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //getElectionResults();
+
+                candidates.clear();
+                getElectionResults();
             }
         });
+    }
 
-    //}
+    public void getElectionResults () {
 
-/*    public void getElectionResults () {
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        //databaseReference.addValueEventListener(new ValueEventListener() {
+        profiles.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -124,16 +80,29 @@ public class ViewCandidateVotes extends AppCompatActivity {
                     voteNameVal = candidateName.getValue().toString();
 
                     candidates.add(new PieEntry(voteCountVal, voteNameVal));
-
                 }
+
+                PieDataSet pieDataSet = new PieDataSet(candidates, "Candidates");
+
+                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                pieDataSet.setValueTextColor(Color.BLACK);
+                pieDataSet.setValueTextSize(16f);
+
+                PieData pieData = new PieData(pieDataSet);
+
+                //pieChart.setUsePercentValues(true);
+
+                pieChart.setData(pieData);
+                pieChart.getDescription().setEnabled(false);
+                pieChart.setCenterText("Candidates");
+                pieChart.animate();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
-
+        });
 
     }
 }

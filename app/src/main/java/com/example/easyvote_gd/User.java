@@ -12,6 +12,7 @@ public class User {
         this.email = email;
         this.age = age;
         this.fullName = fullName;
+        //this.uid = uid;
     }
 
     public String getFullName() { return fullName; }
@@ -33,6 +34,7 @@ public class User {
         this.email = email;
     }
 
+    //public String getUid() { return uid; }
 }
 
 

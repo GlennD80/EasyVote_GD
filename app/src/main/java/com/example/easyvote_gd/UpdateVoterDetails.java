@@ -12,10 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UpdateVoterDetails extends AppCompatActivity implements View.OnClickListener {
@@ -107,25 +112,28 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         }
     }
 
-    //public String newFullName, newAddress, newAge;
-
-/*    private boolean isNameChanged() {
-        if(!newFullNameUpd.getText().toString().trim().equals(fullName)) {
-            return true;
-        }
-        return false;
-    }*/
-
-/*    DatabaseReference dbRef=FirebaseDatabase.getInstance().getReference();
-        dbRef.child("Rooms").child(roomNumber);
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("room_price", updatedPrice);
-
-        dbRef.updateChildren(updates);*/
-
     private boolean isNameChanged() {
+
         if(!fullName.equals(newFullNameUpd.getText().toString())){
-            //reference.child("Users").child(email).child("name").setValue(newFullNameUpd.getText().toString().trim());
+
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference newName = ref.child("Users").child("uidList");
+
+
+            newName.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String name = dataSnapshot.getValue(String.class);
+                    dataSnapshot.getRef().child("name").setValue(newFullNameUpd.getText().toString().trim());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            //reference = FirebaseDatabase.getInstance().getReference().child("Users");
+           //
 
 /*            FirebaseDatabase.getInstance().getReference("Users")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -145,27 +153,12 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         return false;
     }
 
-/*    private boolean isAddressChanged() {
-        if(!newAddressUpd.getText().toString().trim().equals(address)) {
-            return true;
-        }
-        return false;
-    }*/
-
     private boolean isAddressChanged() {
         if(!address.equals(newAddressUpd.getText().toString())) {
             return true;
         }
         return false;
     }
-
-
-/*    private boolean isAgeChanged() {
-        if(!newAgeUpd.getText().toString().trim().equals(age)) {
-            return true;
-        }
-        return false;
-    }*/
 
     private boolean isAgeChanged() {
         if(!age.equals(newAgeUpd.getText().toString())) {

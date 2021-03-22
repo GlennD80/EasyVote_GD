@@ -14,27 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyVote_GD">
         <activity android:name=".ViewCandidateVotes"
-            android:parentActivityName=".AdminVoteDetails" />
+            android:parentActivityName=".AdminMainMenu" />
         <activity
-            android:name=".UpdateVoterDetails2"
-            android:parentActivityName=".AdminVoteDetails" />
+            android:name=".SearchVoterDetails"
+            android:parentActivityName=".AdminMainMenu" />
         <activity
             android:name=".UpdateCandidateList"
-            android:parentActivityName=".AdminVoteDetails" />
+            android:parentActivityName=".AdminMainMenu" />
         <activity android:name=".CandidateList" />
         <activity
             android:name=".UpdateVoterDetails"
-            android:parentActivityName=".AdminVoteDetails" />
+            android:parentActivityName=".AdminMainMenu" />
         <activity
             android:name=".VoterList"
-            android:parentActivityName=".AdminVoteDetails" />
+            android:parentActivityName=".AdminMainMenu" />
         <activity
-            android:name=".AdminUser"
+            android:name=".AdminUserDetails"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".ConfirmVote" />
         <activity android:name=".UserVote" />
         <activity
-            android:name=".AdminVoteDetails"
+            android:name=".AdminMainMenu"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ForgotPassword"

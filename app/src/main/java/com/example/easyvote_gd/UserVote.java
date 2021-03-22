@@ -2,7 +2,6 @@ package com.example.easyvote_gd;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class UserVote extends AppCompatActivity {
+
+    String name;
 
     DatabaseReference reference;
     RecyclerView recyclerView;
@@ -42,9 +43,11 @@ public class UserVote extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list = new ArrayList<Profile>();
-                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    Profile p = dataSnapshot1.getValue(Profile.class);
-                    list.add(p);
+                for(DataSnapshot candidate : dataSnapshot.getChildren()) {
+
+                    Profile profile = candidate.getValue(Profile.class);
+                    profile.setUid(candidate.getKey());
+                    list.add(profile);
                 }
 
                 adapter = new MyAdapter(UserVote.this, list);

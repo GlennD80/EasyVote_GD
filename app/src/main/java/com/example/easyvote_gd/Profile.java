@@ -5,13 +5,15 @@ public class Profile {
     public Profile() {
     }
 
+    private String uid;
     private String name;
     private String party;
     private String location;
     private String profilePic;
     private String voteBtn;
 
-    public Profile(String name, String party, String location, String profilePic, String voteBtn) {
+    public Profile(String uid, String name, String party, String location, String profilePic, String voteBtn) {
+        this.uid = uid;
         this.name = name;
         this.party = party;
         this.location = location;
@@ -19,6 +21,8 @@ public class Profile {
         this.voteBtn = voteBtn;
     }
 
+    public String getUid() { return uid; }
+    public void setUid(String uid) { this.uid = uid; }
     public String getName() {return name;}
     public void setName(String name) { this.name = name; }
     public String getParty() { return party; }

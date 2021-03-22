@@ -59,8 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
     @Override
-    public int getItemCount() {
-        return profiles.size();
+    public int getItemCount() { return profiles.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder
@@ -87,7 +86,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                     Bundle extras = new Bundle();
 
                     String name = profiles.get(position).getName();
+                    String uid = profiles.get(position).getUid();
+
+                    //extras.putString("name", name);
+
                     extras.putString("name", name);
+                    extras.putString("uid", uid);
                     intent.putExtras(extras);
                     context.startActivity(intent);
                     //String party
