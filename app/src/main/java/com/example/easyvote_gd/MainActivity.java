@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         forgotPassword.setOnClickListener(this);
     }
 
+    /**
+     * button click for main activity options
+     * @param v
+     */
+
     @Override
     public void onClick(View v) {
 
@@ -72,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * validate input values and error messages
+     */
     private void userLogin() {
 
         String email = editTextEmail.getText().toString().trim();
@@ -101,12 +109,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        //user = FirebaseAuth.getInstance().getCurrentUser();
-        //reference = FirebaseDatabase.getInstance().getReference("Users");
-
-/*        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();*/
+        /**
+         * login auth from firebase
+         */
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -114,20 +119,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if(user.isEmailVerified()){
-                        //startActivity(new Intent(MainActivity.this, ProfileActivity.class));
 
+                        //get current user reference
                         user = FirebaseAuth.getInstance().getCurrentUser();
                         reference = FirebaseDatabase.getInstance().getReference("Users");
                         userID = user.getUid();
 
+                        //snapshot of user id.
                         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                //if admin user navigate to admin activity
                                 if(snapshot.child("admin").exists()) {
                                     Boolean admin = snapshot.child("admin").getValue().toString().equals("true");
                                     if(admin) {
                                         startActivity(new Intent(MainActivity.this, AdminUserDetails.class));
                                         finish();
+
+                                        //if voter navigate to voter activity
                                     } else {
                                         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                                         finish();
@@ -137,12 +147,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-
                             }
                         });
-
-
                     } else {
+
+                        //validate email auth in firebase error message
                         user.sendEmailVerification();
                         Toast.makeText(MainActivity.this, "Check your email verification", Toast.LENGTH_LONG).show();
                     }

@@ -34,6 +34,7 @@ public class AdminUserDetails extends AppCompatActivity {
 
         logoutAdmin = (Button) findViewById(R.id.logOutAdmin);
 
+        //admin user logout btn
         logoutAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +43,7 @@ public class AdminUserDetails extends AppCompatActivity {
             }
         });
 
+        //get user firebase reference
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -49,6 +51,7 @@ public class AdminUserDetails extends AppCompatActivity {
         final TextView fullNameTextView = (TextView) findViewById(R.id.adminNameDB);
         final TextView emailTextView = (TextView) findViewById(R.id.adminEmailDB);
 
+        //display admin user details populated from firebase
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -63,6 +66,7 @@ public class AdminUserDetails extends AppCompatActivity {
                 }
             }
 
+            //error message if fail to get admin details
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(AdminUserDetails.this, "Error Getting User Details", Toast.LENGTH_LONG).show();
@@ -71,6 +75,7 @@ public class AdminUserDetails extends AppCompatActivity {
 
         voteAdmin = (Button) findViewById(R.id.adminVoteDet);
 
+        //navigate to next activity
         voteAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

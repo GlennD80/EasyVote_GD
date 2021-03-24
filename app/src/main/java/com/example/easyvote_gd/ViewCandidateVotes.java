@@ -90,7 +90,7 @@ public class ViewCandidateVotes extends AppCompatActivity {
 
                 PieData pieData = new PieData(pieDataSet);
 
-                //pieChart.setUsePercentValues(true);
+                pieChart.setUsePercentValues(true);
 
                 pieChart.setData(pieData);
                 pieChart.getDescription().setEnabled(false);

@@ -83,10 +83,6 @@ public class VoterList extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
 
     public void export (View view) {

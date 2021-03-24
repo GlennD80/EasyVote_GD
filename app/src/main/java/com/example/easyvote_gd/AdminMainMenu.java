@@ -28,6 +28,12 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
 
     private TextView banner;
 
+    /**
+     * admin user main menu details
+     * @param
+     */
+
+    //admin user logout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //voter list menu
         voterList = (Button) findViewById(R.id.viewVotersList);
 
         voterList.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +62,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //update voter details
         updateVoterDetails = (Button) findViewById(R.id.updateVoterDetails);
 
         updateVoterDetails.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +72,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //view candidate list
         candidateList = (Button) findViewById(R.id.viewCandidateList);
 
         candidateList.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +82,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //update candidate list
         updateCandidateList = (Button) findViewById(R.id.updateCandidateList);
 
         updateCandidateList.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +92,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //view candidate vote results
         viewCandidateVotes = (Button) findViewById(R.id.candidateVotes);
 
         viewCandidateVotes.setOnClickListener(new View.OnClickListener() {

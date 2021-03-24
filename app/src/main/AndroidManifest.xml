@@ -21,7 +21,8 @@
         <activity
             android:name=".UpdateCandidateList"
             android:parentActivityName=".AdminMainMenu" />
-        <activity android:name=".CandidateList" />
+        <activity android:name=".CandidateList"
+            android:parentActivityName=".AdminMainMenu" />
         <activity
             android:name=".UpdateVoterDetails"
             android:parentActivityName=".AdminMainMenu" />
@@ -31,8 +32,10 @@
         <activity
             android:name=".AdminUserDetails"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".ConfirmVote" />
-        <activity android:name=".UserVote" />
+        <activity android:name=".ConfirmVote"
+            android:parentActivityName=".UserVote" />
+        <activity android:name=".UserVote"
+            android:parentActivityName=".ProfileActivity" />
         <activity
             android:name=".AdminMainMenu"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
