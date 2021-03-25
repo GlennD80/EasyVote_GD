@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -61,13 +62,13 @@
 
         <Button
             android:id="@+id/voteBtn"
-            android:layout_width="182dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:text="@string/voteBtn"
-            android:textColor="#FBFBFB"
-            app:backgroundTint="#716E6E" />
+            android:layout_width="168dp"
+            android:layout_height="42dp"
+            android:layout_margin="6dp"
+            android:text="Vote Me"
+            android:textColor="#0C0000"
+            app:backgroundTint="#716E6E"
+            />
 
 
     </LinearLayout>

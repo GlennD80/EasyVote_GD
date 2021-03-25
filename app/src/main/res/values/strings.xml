@@ -12,7 +12,6 @@
     <string name="constituency">Constituency</string>
     <string name="register_user">REGISTER USER</string>
     <string name="logout">Logout</string>
-    <string name="vote">Vote</string>
     <string name="reset_password">RESET PASSWORD</string>
     <string name="admin_details">Admin Details</string>
     <string name="full_name1">Full Name:</string>
@@ -52,4 +51,5 @@
     <string name="todo">TODO</string>
     <string name="view_candidate_votes">View Candidate Votes</string>
     <string name="update_vote_count">Update Vote Count</string>
+    <string name="vote">Vote</string>
 </resources>

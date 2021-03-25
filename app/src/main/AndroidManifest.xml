@@ -33,9 +33,9 @@
             android:name=".AdminUserDetails"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".ConfirmVote"
-            android:parentActivityName=".UserVote" />
-        <activity android:name=".UserVote"
-            android:parentActivityName=".ProfileActivity" />
+            android:parentActivityName=".Vote_CandidateList" />
+        <activity android:name=".Vote_CandidateList"
+            android:parentActivityName=".VoterProfileActivity" />
         <activity
             android:name=".AdminMainMenu"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
@@ -43,10 +43,10 @@
             android:name=".ForgotPassword"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".VoterProfileActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".RegisterUser"
+            android:name=".RegisterVoter"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".MainActivity"

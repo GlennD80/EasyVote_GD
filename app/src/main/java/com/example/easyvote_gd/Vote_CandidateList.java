@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UserVote extends AppCompatActivity {
+public class Vote_CandidateList extends AppCompatActivity {
 
     String name;
 
@@ -50,13 +50,13 @@ public class UserVote extends AppCompatActivity {
                     list.add(profile);
                 }
 
-                adapter = new MyAdapter(UserVote.this, list);
+                adapter = new MyAdapter(Vote_CandidateList.this, list);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UserVote.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(Vote_CandidateList.this, "Something went wrong", Toast.LENGTH_LONG).show();
             }
         });
 

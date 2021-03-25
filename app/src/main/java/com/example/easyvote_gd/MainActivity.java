@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.register:
-                startActivity(new Intent(this, RegisterUser.class));
+                startActivity(new Intent(this, RegisterVoter.class));
                 break;
             case R.id.signIn:
                 userLogin();
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                         //if voter navigate to voter activity
                                     } else {
-                                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                                        startActivity(new Intent(MainActivity.this, VoterProfileActivity.class));
                                         finish();
                                     }
                                 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterUser">
+    tools:context=".RegisterVoter">
 
     <Button
         android:id="@+id/signIn"
@@ -14,7 +14,7 @@
         android:layout_marginBottom="184dp"
         android:background="#16931B"
         android:fontFamily="sans-serif-black"
-        android:text="@string/register_user"
+        android:text="Register Voter"
         android:textColor="#090808"
         app:backgroundTint="#16931B"
         app:layout_constraintBottom_toBottomOf="parent"

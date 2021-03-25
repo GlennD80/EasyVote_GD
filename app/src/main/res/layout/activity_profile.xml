@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".VoterProfileActivity">
 
     <Button
         android:id="@+id/signOut"
@@ -14,7 +14,7 @@
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
         android:text="@string/logout"
-        android:textColor="#FBFBFB"
+        android:textColor="#0C0000"
         app:backgroundTint="#716E6E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center|left"
         android:text="@string/full_name1"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/banner" />
 
@@ -59,7 +59,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center|left"
         android:text="@string/email1"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/const_DB" />
 
@@ -72,7 +72,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center|left"
         android:text="@string/age1"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullName_User" />
 
@@ -82,6 +82,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:gravity="center|left"
+        android:background="#ECEFF1"
         android:textColor="#090808"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +99,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center|left"
         android:text="Address:"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_DB" />
 
@@ -108,6 +109,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:gravity="center|left"
+        android:background="#ECEFF1"
         android:textColor="#090808"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +125,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="center|left"
+        android:background="#ECEFF1"
         android:textColor="#090808"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,6 +141,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="center|left"
+        android:background="#ECEFF1"
         android:textColor="#090808"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +159,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/vote"
-        android:textColor="#FBFBFB"
+        android:textColor="#0C0000"
         app:backgroundTint="#716E6E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/signOut"

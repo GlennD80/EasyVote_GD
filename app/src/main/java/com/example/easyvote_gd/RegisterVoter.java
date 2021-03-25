@@ -19,9 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-
-public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
+public class RegisterVoter extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
@@ -86,6 +84,13 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+        //address return if not empty
+        if(address.isEmpty()){
+            editTextAddress.setError("Address is Required");
+            editTextAddress.requestFocus();
+            return;
+        }
+
         //email return if not empty
         if(email.isEmpty()){
             editTextEmail.setError("Email is Required");
@@ -97,13 +102,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             editTextEmail.setError("Please Provide Valid Email");
             editTextEmail.requestFocus();
-            return;
-        }
-
-        //address return if not empty
-        if(address.isEmpty()){
-            editTextAddress.setError("Address is Required");
-            editTextAddress.requestFocus();
             return;
         }
 
@@ -135,7 +133,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                     //if user under 18 - user cannot register
                     if (ageNumber <= 17) {
-                        Toast.makeText(RegisterUser.this, "User must be 18 and above to register", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterVoter.this, "User must be 18 and above to register", Toast.LENGTH_SHORT).show();
                     } else {
 
                         //if user is 18 and above user can register
@@ -147,15 +145,15 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
                                 //register user if task successful
                                 if(task.isSuccessful()) {
-                                    Toast.makeText(RegisterUser.this, "User Registered", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterVoter.this, "User Registered", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(RegisterUser.this, "Failed to register, Try again", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterVoter.this, "Failed to register, Try again", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
                     }
                 } else {
-                    Toast.makeText(RegisterUser.this, "Failed to register", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterVoter.this, "Failed to register", Toast.LENGTH_LONG).show();
                 }
             }
         });
