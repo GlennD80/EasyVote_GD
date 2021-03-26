@@ -3,6 +3,7 @@ package com.example.easyvote_gd;
 public class User {
 
     public String fullName, age, address, email;
+    boolean admin, voted;
 
     public User(){
     }
@@ -12,7 +13,9 @@ public class User {
         this.email = email;
         this.age = age;
         this.fullName = fullName;
-        //this.uid = uid;
+        this.admin = false;
+        this.voted = false;
+
     }
 
     public String getFullName() { return fullName; }
@@ -30,8 +33,22 @@ public class User {
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String email) { this.email = email; }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public boolean isVoted() {
+        return voted;
+    }
+
+    public void setVoted(boolean voted) {
+        this.voted = voted;
     }
 
     //public String getUid() { return uid; }

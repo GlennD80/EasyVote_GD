@@ -51,7 +51,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
                     //String uid = uidList1().toString().trim();
 
-
                     extras.putString("name", fullName);
                     extras.putString("address", address);
                     extras.putString("age", age);
