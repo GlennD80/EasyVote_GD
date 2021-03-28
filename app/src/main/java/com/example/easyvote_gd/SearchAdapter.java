@@ -49,14 +49,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                     String age = ageList.get(position);
                     String email = emailList.get(position);
 
-                    //String uid = uidList1().toString().trim();
+                    String uid = uidList.get(position);
 
                     extras.putString("name", fullName);
                     extras.putString("address", address);
                     extras.putString("age", age);
                     extras.putString("email", email);
 
-                    //extras.putString(uid);
+                    extras.putString("uid", uid);
 
                     intent.putExtras(extras);
                     context.startActivity(intent);
@@ -65,12 +65,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         }
     }
 
-    public SearchAdapter(Context context, ArrayList<String> fullNameList, ArrayList<String> addressList, ArrayList<String> ageList, ArrayList<String> emailList) {
+    public SearchAdapter(Context context, ArrayList<String> fullNameList, ArrayList<String> addressList, ArrayList<String> ageList, ArrayList<String> emailList,  ArrayList<String> uidList) {
         this.context = context;
         this.fullNameList = fullNameList;
         this.addressList = addressList;
         this.ageList = ageList;
         this.emailList = emailList;
+        this.uidList = uidList;
     }
 
     @Override

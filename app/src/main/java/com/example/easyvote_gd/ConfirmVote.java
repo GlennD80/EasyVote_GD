@@ -52,15 +52,24 @@ public class ConfirmVote extends AppCompatActivity {
             }
         });
 
+
+        /**
+         * if voter has voted disable confirm button for all candidates
+         *
+         * verify from firebase bool value
+         */
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference1 = FirebaseDatabase.getInstance().getReference("Users");
         userID1 = user.getUid();
 
+        //get voter ref by uid
         reference1.child(userID1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("voted").exists()) {
+
+                    //if true disable confirm btn
                     Boolean voted = snapshot.child("voted").getValue().toString().equals("true");
                     if(voted) {
                         confirmVote.setVisibility(View.INVISIBLE);
@@ -91,6 +100,8 @@ public class ConfirmVote extends AppCompatActivity {
 
         /**
          * confirm candidate vote and increment vote count in firebase by 1
+         *
+         * disable/invisible confirm vote btn when voter had voted - update bool in firebase
          */
         confirmVote = (Button) findViewById(R.id.confirmVote);
 
@@ -107,6 +118,23 @@ public class ConfirmVote extends AppCompatActivity {
                         //get current value in fb and increment vote count by 1
                         long voteCounts = (long) profile.getValue();
                         candidates.setValue(voteCounts + 1);
+
+                        //get firebase for voter uid and set voter bool to true so voter cannot vote again
+                        DatabaseReference voteUpdate = FirebaseDatabase.getInstance().getReference("Users").child(userID1);
+
+                        voteUpdate.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                dataSnapshot.getRef().child("voted").setValue(true);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        confirmVote.setVisibility(View.INVISIBLE);
                         Toast.makeText(ConfirmVote.this, "You have recorded your vote", Toast.LENGTH_SHORT).show();
                     }
 

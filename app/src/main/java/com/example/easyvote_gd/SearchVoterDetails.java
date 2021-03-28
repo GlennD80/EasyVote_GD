@@ -32,7 +32,7 @@ public class SearchVoterDetails extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button updateVoterDetailsBtn;
 
-    ArrayList<String> uidList1;
+    ArrayList<String> uidList;
 
     ArrayList<String> fullNameList;
     ArrayList<String> addressList;
@@ -67,7 +67,7 @@ public class SearchVoterDetails extends AppCompatActivity {
         addressList = new ArrayList<>();
         ageList = new ArrayList<>();
         emailList = new ArrayList<>();
-        uidList1 = new ArrayList<>();
+        uidList = new ArrayList<>();
 
         search_edit_text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,7 +89,7 @@ public class SearchVoterDetails extends AppCompatActivity {
                     addressList.clear();
                     ageList.clear();
                     emailList.clear();
-                    uidList1.clear();
+                    uidList.clear();
                     recyclerView.removeAllViews();
                 }
             }
@@ -106,7 +106,7 @@ public class SearchVoterDetails extends AppCompatActivity {
                 addressList.clear();
                 ageList.clear();
                 emailList.clear();
-                uidList1.clear();
+                uidList.clear();
                 recyclerView.removeAllViews();
 
                 int counter = 0;
@@ -125,14 +125,14 @@ public class SearchVoterDetails extends AppCompatActivity {
                         addressList.add(address);
                         ageList.add(age);
                         emailList.add(email);
-                        uidList1.add(uid);
+                        uidList.add(uid);
                         counter++;
                     } else if (email.toLowerCase().contains(searchedString.toLowerCase())){
                         fullNameList.add(fullName);
                         addressList.add(address);
                         ageList.add(age);
                         emailList.add(email);
-                        uidList1.add(uid);
+                        uidList.add(uid);
                         counter++;
                     }
 
@@ -140,7 +140,7 @@ public class SearchVoterDetails extends AppCompatActivity {
                         break;
                 }
 
-                searchAdapter = new SearchAdapter(SearchVoterDetails.this, fullNameList, addressList, ageList, emailList);
+                searchAdapter = new SearchAdapter(SearchVoterDetails.this, fullNameList, addressList, ageList, emailList, uidList);
                 recyclerView.setAdapter(searchAdapter);
             }
 

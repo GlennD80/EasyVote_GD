@@ -40,8 +40,10 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
     public String address;
     public String age;
     public String email;
+    public String uid;
 
     public Button updateDet;
+    private Button deleteVoterBtn;
 
     DatabaseReference reference;
     FirebaseDatabase mFire;
@@ -55,8 +57,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
 
         mAuth = FirebaseAuth.getInstance();
 
-        //reference = FirebaseDatabase.getInstance().getReference().child("Users");
-
+        //back button in toolbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fullNameUpd = (TextView) findViewById(R.id.fullNameUpdate);
@@ -69,8 +70,13 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         newAddressUpd = (EditText) findViewById(R.id.enterAddressUpdate);
         newAgeUpd = (EditText) findViewById(R.id.enterAgeUpdate);
 
+        deleteVoterBtn = (Button) findViewById(R.id.deleteVoter);
+
+        //get voter bundle details from search option from firebase
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+
+        uid = extras.getString("uid");
 
         fullName = extras.getString("name");
         fullNameUpd.setText(" Name: " + fullName);
@@ -85,9 +91,24 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         emailUpd.setText(" Email: " + email);
 
        updateDet.setOnClickListener(this);
+
+        deleteVoterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference deleteVoter = ref.child("Users").child(uid);
+
+                deleteVoter.removeValue();
+                Toast.makeText(UpdateVoterDetails.this, "Voter Deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private void updateUser() {
+    /**
+     * update current voter details with new details
+     */
+    public void updateUser() {
 
         String newFullName = newFullNameUpd.getText().toString().trim();
         String newAddress = newAddressUpd.getText().toString().trim();
@@ -114,17 +135,17 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
 
     private boolean isNameChanged() {
 
-        if(!fullName.equals(newFullNameUpd.getText().toString())){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference newName = ref.child("Users").child(uid);
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-            DatabaseReference newName = ref.child("Users").child("uidList");
+        String newFullName = newFullNameUpd.getText().toString().trim();
 
+        if(!fullName.equals(newFullName)){
 
             newName.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String name = dataSnapshot.getValue(String.class);
-                    dataSnapshot.getRef().child("name").setValue(newFullNameUpd.getText().toString().trim());
+                    dataSnapshot.getRef().child("fullName").setValue(newFullName);
                 }
 
                 @Override
@@ -132,36 +153,57 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
 
                 }
             });
-            //reference = FirebaseDatabase.getInstance().getReference().child("Users");
-           //
-
-/*            FirebaseDatabase.getInstance().getReference("Users")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    .child("name").setValue(newFullNameUpd.getText().toString().trim());*/
-
-/*            DatabaseReference dbRef=FirebaseDatabase.getInstance().getReference();
-            dbRef.child("Users").child(email);
-            Map<String, Object> updates = new HashMap<>();
-            updates.put("name", newFullNameUpd.getText().toString());
-
-            dbRef.updateChildren(updates);*/
-
-
-            //fullName = newFullNameUpd.getText().toString();
             return true;
         }
         return false;
     }
 
     private boolean isAddressChanged() {
-        if(!address.equals(newAddressUpd.getText().toString())) {
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference newAddressDB = ref.child("Users").child(uid);
+
+        String newAddress = newAddressUpd.getText().toString().trim();
+
+        if(!address.equals(newAddress)) {
+
+            newAddressDB.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    dataSnapshot.getRef().child("address").setValue(newAddress);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
             return true;
         }
         return false;
     }
 
     private boolean isAgeChanged() {
-        if(!age.equals(newAgeUpd.getText().toString())) {
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference newAgeDB = ref.child("Users").child(uid);
+
+        String newAge = newAgeUpd.getText().toString().trim();
+
+        if(!age.equals(newAge)) {
+
+            newAgeDB.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    dataSnapshot.getRef().child("age").setValue(newAge);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
             return true;
         }
@@ -171,16 +213,9 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
     public void onClick (View view) {
         updateUser();
         if(isNameChanged() || isAddressChanged() || isAgeChanged()) {
-            //reference.child("Users").child(email).child("name").setValue(newFullNameUpd.getText().toString().trim());
-            //reference.child(email).child("address").setValue(newAddressUpd.getText().toString().trim());
-            //reference.child(email).child("age").setValue(newAgeUpd.getText().toString().trim());
-
-            //FirebaseDatabase.getInstance().getReference("Users").setValue(newFullNameUpd.getText().toString().trim());
-
-        Toast.makeText(UpdateVoterDetails.this, "Details have been updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateVoterDetails.this, "Details have been updated", Toast.LENGTH_SHORT).show();
         } else {
            Toast.makeText(UpdateVoterDetails.this, "Error updating details", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

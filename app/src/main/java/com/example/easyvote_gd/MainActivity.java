@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /**
          * login auth from firebase
          */
-
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -132,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                 //if admin user navigate to admin activity
                                 if(snapshot.child("admin").exists()) {
+
+                                    //if true admin navigate to  activity
                                     Boolean admin = snapshot.child("admin").getValue().toString().equals("true");
                                     if(admin) {
                                         startActivity(new Intent(MainActivity.this, AdminUserDetails.class));

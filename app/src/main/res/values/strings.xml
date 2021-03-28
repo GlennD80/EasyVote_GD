@@ -52,4 +52,5 @@
     <string name="view_candidate_votes">View Candidate Votes</string>
     <string name="update_vote_count">Update Vote Count</string>
     <string name="vote">Vote</string>
+    <string name="delete_voter">Delete Voter</string>
 </resources>

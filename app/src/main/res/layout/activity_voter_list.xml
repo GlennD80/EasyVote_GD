@@ -14,8 +14,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="30dp"
-        android:text="@string/export_list"
-        android:textColor="#FBFBFB"
+        android:text="@string/delete_voter"
+        android:textColor="#0C0C0C"
         app:backgroundTint="#716E6E" />
 
     <LinearLayout
@@ -27,7 +27,9 @@
             android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="80dp"></ListView>
+            android:layout_marginTop="80dp">
+
+        </ListView>
 
     </LinearLayout>
 
