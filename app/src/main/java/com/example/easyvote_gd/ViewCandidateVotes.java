@@ -82,7 +82,9 @@ public class ViewCandidateVotes extends AppCompatActivity {
                     candidates.add(new PieEntry(voteCountVal, voteNameVal));
                 }
 
-                PieDataSet pieDataSet = new PieDataSet(candidates, "Candidates");
+                //PieDataSet pieDataSet = new PieDataSet(candidates, "Candidates");
+
+                PieDataSet pieDataSet = new PieDataSet(candidates, "");
 
                 pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                 pieDataSet.setValueTextColor(Color.BLACK);

@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -13,7 +12,6 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,8 +38,9 @@ public class UpdateCandidateList extends AppCompatActivity {
     ImageView addCandidatePic;
     int TAKE_IMAGE_CODE = 10001;
 
-    DatabaseReference reference;
+    DatabaseReference candidateRefFirebase;
     DatabaseReference reference1;
+    private String candidatePicUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class UpdateCandidateList extends AppCompatActivity {
         addNewCandidate = (Button) findViewById(R.id.add_Candidate_Btn);
         addCandidatePic = (ImageView) findViewById(R.id.imageCandidate);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Profiles");
+        candidateRefFirebase = FirebaseDatabase.getInstance().getReference().child("Profiles");
 
         addNewCandidate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +70,11 @@ public class UpdateCandidateList extends AppCompatActivity {
         String name = addCandidateName.getText().toString().trim();
         String party = addCandidateParty.getText().toString().trim();
         String location = addCandidateLocation.getText().toString().trim();
+        String profilePic = candidatePicUri;
 
-        NewCandidate newCandidate = new NewCandidate(name, party, location);
 
-        reference.push().setValue(newCandidate);
+        NewCandidate newCandidate = new NewCandidate(name, party, location, profilePic);
+        candidateRefFirebase.push().setValue(newCandidate);
 
         //Toast.makeText(UpdateCandidateList.this, "New Candidate has been inserted", Toast.LENGTH_LONG).show();
     }
@@ -107,20 +107,19 @@ public class UpdateCandidateList extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
-        StorageReference reference = FirebaseStorage.getInstance().getReference().child("images/" + randomKey);
+        StorageReference storageRefImage = FirebaseStorage.getInstance().getReference().child("images/" + randomKey);
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+/*        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reference1 = FirebaseDatabase.getInstance().getReference().child("Profiles")
-                .child(uid).push();
-               //child("profilePic").push();
+                //.child(uid).push();
+                //.child("profilePic").push();
+                .child(uid).child("profilePic").push();*/
 
-
-
-        reference.putBytes(baos.toByteArray())
+        storageRefImage.putBytes(baos.toByteArray())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        getDownloadUrl(reference);
+                        getDownloadUrl(storageRefImage);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -130,11 +129,14 @@ public class UpdateCandidateList extends AppCompatActivity {
                 });
     }
 
+
+
     private void getDownloadUrl (StorageReference reference) {
         reference.getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+                        candidatePicUri = uri.toString();
                         setUserProfileUrI(uri);
                     }
                 });
@@ -144,14 +146,18 @@ public class UpdateCandidateList extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
-            .setPhotoUri(uri)
+
+                //image url in firebase
+                .setPhotoUri(uri)
                 .build();
+
+
 
         user.updateProfile(request)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(UpdateCandidateList.this, "Updated Successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UpdateCandidateList.this, "Candidate updated Successfully", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

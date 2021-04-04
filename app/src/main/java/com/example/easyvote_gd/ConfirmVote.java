@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,9 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ConfirmVote extends AppCompatActivity {
 
@@ -109,15 +105,15 @@ public class ConfirmVote extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DatabaseReference candidates = FirebaseDatabase.getInstance().getReference("Profiles").child(uid).child("count");
+                DatabaseReference candidateCount = FirebaseDatabase.getInstance().getReference("Profiles").child(uid).child("count");
 
-                candidates.addListenerForSingleValueEvent(new ValueEventListener() {
+                candidateCount.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot profile) {
 
                         //get current value in fb and increment vote count by 1
                         long voteCounts = (long) profile.getValue();
-                        candidates.setValue(voteCounts + 1);
+                        candidateCount.setValue(voteCounts + 1);
 
                         //get firebase for voter uid and set voter bool to true so voter cannot vote again
                         DatabaseReference voteUpdate = FirebaseDatabase.getInstance().getReference("Users").child(userID1);

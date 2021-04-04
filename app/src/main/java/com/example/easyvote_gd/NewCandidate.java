@@ -4,23 +4,23 @@ import android.widget.ImageView;
 
 public class NewCandidate {
 
-    String newCandidateName;
-    String newCandidateParty;
-    String newCandidateLocation;
-    //ImageView newProfilePic;
-
     String name;
     String party;
     String location;
-    //ImageView profilePic;
+    String count;
+    String profilePic;
 
-    //public NewCandidate(String name, String party, String location, String profilePic)
-    public NewCandidate(String name, String party, String location) {
+    public NewCandidate(String name, String party, String location, String profilePic) {
         this.name = name;
         this.party = party;
         this.location = location;
-        //this.profilePic = profilePic;
+        this.count = "0";
+        this.profilePic = profilePic;
     }
+
+    public String getCount() { return count; }
+
+    public void setCount(String count) { this.count = count; }
 
     public String getName() {
         return name;
@@ -46,7 +46,7 @@ public class NewCandidate {
         this.location = location;
     }
 
- /*  public ImageView getProfilePic() { return profilePic; }
+    public String getProfilePic() { return profilePic; }
 
-    public void setProfilePic(ImageView profilePic) { this.profilePic = profilePic; }*/
+    public void setProfilePic(String profilePic) { this.profilePic = profilePic; }
 }

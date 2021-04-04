@@ -211,8 +211,11 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
     }
 
     public void onClick (View view) {
+        Boolean nameChanged = isNameChanged();
+        Boolean addressChanged = isAddressChanged();
+        Boolean ageChanged = isAgeChanged();
         updateUser();
-        if(isNameChanged() || isAddressChanged() || isAgeChanged()) {
+        if(nameChanged || addressChanged || ageChanged) {
             Toast.makeText(UpdateVoterDetails.this, "Details have been updated", Toast.LENGTH_SHORT).show();
         } else {
            Toast.makeText(UpdateVoterDetails.this, "Error updating details", Toast.LENGTH_SHORT).show();
