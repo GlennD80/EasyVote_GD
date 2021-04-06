@@ -86,12 +86,16 @@ public class ConfirmVote extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
+        //firebase ref for profiles table
         referenceDB = FirebaseDatabase.getInstance().getReference().child("Profiles");
 
         selectedCandidate = findViewById(R.id.candidateName);
 
+        //candidate name and uid details
         name = extras.getString("name");
         uid = extras.getString("uid");
+
+        //display candidate name
         selectedCandidate.setText("The candidate you have choosen is " + "\n" + "\n" + name);
 
         /**
@@ -130,6 +134,7 @@ public class ConfirmVote extends AppCompatActivity {
                             }
                         });
 
+                        //disable confirm vote btn after vote selection
                         confirmVote.setVisibility(View.INVISIBLE);
                         Toast.makeText(ConfirmVote.this, "You have recorded your vote", Toast.LENGTH_SHORT).show();
                     }

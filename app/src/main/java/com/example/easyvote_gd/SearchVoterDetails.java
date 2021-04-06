@@ -32,8 +32,8 @@ public class SearchVoterDetails extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button updateVoterDetailsBtn;
 
+    //lists of voter details
     ArrayList<String> uidList;
-
     ArrayList<String> fullNameList;
     ArrayList<String> addressList;
     ArrayList<String> ageList;
@@ -56,13 +56,19 @@ public class SearchVoterDetails extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.result_list);
         //updateVoterDetailsBtn = (Button) findViewById(R.id.updateVoterDetailsBtn);
 
+        //firebase ref
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        //layout of recycler view
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
+
+        /**
+         * search for voter
+         */
         fullNameList = new ArrayList<>();
         addressList = new ArrayList<>();
         ageList = new ArrayList<>();

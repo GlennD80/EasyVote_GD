@@ -33,17 +33,22 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         emailEditText = (EditText) findViewById(R.id.emailRst);
         resetPasswordButton = (Button) findViewById(R.id.resetPasswordBtn);
 
+        //auth user instance from login and in firebase
         auth = FirebaseAuth.getInstance();
 
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
 
+        /**
+         * reset password of user and validate input field
+         */
         resetPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetPassword();
             }
 
+            //validate field for email
             private void resetPassword() {
                 String email = emailEditText.getText().toString().trim();
 
@@ -59,6 +64,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     return;
                 }
 
+                //toast message for email verification
                 auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

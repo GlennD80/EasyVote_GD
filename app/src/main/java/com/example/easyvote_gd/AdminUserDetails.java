@@ -73,6 +73,7 @@ public class AdminUserDetails extends AppCompatActivity {
             }
         });
 
+        //navigate to next activity
         voteAdmin = (Button) findViewById(R.id.adminVoteDet);
 
         //navigate to next activity

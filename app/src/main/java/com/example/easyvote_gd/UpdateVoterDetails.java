@@ -133,6 +133,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         }
     }
 
+    //if name is changed - not changed return bool
     private boolean isNameChanged() {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -158,6 +159,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         return false;
     }
 
+    //if address is changed - not changed return bool
     private boolean isAddressChanged() {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -184,6 +186,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         return false;
     }
 
+    //if age is changed - not changed return bool
     private boolean isAgeChanged() {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -210,6 +213,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         return false;
     }
 
+    //check if bool for changes, validate and update voter details
     public void onClick (View view) {
         Boolean nameChanged = isNameChanged();
         Boolean addressChanged = isAddressChanged();

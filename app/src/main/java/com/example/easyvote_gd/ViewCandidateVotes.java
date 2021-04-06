@@ -36,7 +36,7 @@ public class ViewCandidateVotes extends AppCompatActivity {
     ArrayList<PieEntry> candidates = new ArrayList<>();
     PieChart pieChart;
 
-    DatabaseReference profiles;
+    DatabaseReference profilesFirebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,9 @@ public class ViewCandidateVotes extends AppCompatActivity {
 
         pieChart = findViewById(R.id.pieChart);
 
-        profiles = FirebaseDatabase.getInstance().getReference().child("Profiles");
+        profilesFirebaseRef = FirebaseDatabase.getInstance().getReference().child("Profiles");
 
+        //btn click updates pie data and clears current data
         updateVoteCountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,10 +62,12 @@ public class ViewCandidateVotes extends AppCompatActivity {
         });
     }
 
+    /**
+     * get firebase count and names values for each candidate
+     */
     public void getElectionResults () {
 
-        //databaseReference.addValueEventListener(new ValueEventListener() {
-        profiles.addListenerForSingleValueEvent(new ValueEventListener() {
+        profilesFirebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -82,8 +85,12 @@ public class ViewCandidateVotes extends AppCompatActivity {
                     candidates.add(new PieEntry(voteCountVal, voteNameVal));
                 }
 
+
                 //PieDataSet pieDataSet = new PieDataSet(candidates, "Candidates");
 
+                /**
+                 * set pie data
+                 */
                 PieDataSet pieDataSet = new PieDataSet(candidates, "");
 
                 pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);

@@ -44,6 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.voteview, parent, false));
     }
 
+    //get candidate details by position
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name.setText(profiles.get(position).getName());
@@ -52,11 +53,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         holder.voteBtn.setText(profiles.get(position).getVoteBtn());
         holder.onClick(position);
 
+        //image display
         Glide.with(holder.profilePic.getContext())
                 .load(profiles.get(position).getProfilePic())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.profilePic);
     }
+
 
     @Override
     public int getItemCount() { return profiles.size();
@@ -77,6 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             voteBtn = (Button) itemView.findViewById(R.id.voteBtn);
         }
 
+        //btn click sends candidate details to next activity to confirm vote
         public void onClick (int position)
         {
             voteBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,37 +92,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                     String name = profiles.get(position).getName();
                     String uid = profiles.get(position).getUid();
 
-                    //extras.putString("name", name);
-
                     extras.putString("name", name);
                     extras.putString("uid", uid);
                     intent.putExtras(extras);
                     context.startActivity(intent);
-                    //String party
-
-                    //String userID =
-
-                    //Toast.makeText(context, position+ "Thank you for your vote", Toast.LENGTH_LONG).show();
-/*                    Toast.makeText(context,"Thank you for your vote", Toast.LENGTH_LONG).show();
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Profiles").child("Candidate1").child("count");
-                    //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Profiles").child("count");
-
-                    //clicked = true;
-                    //voteBtn.setVisibility(View.INVISIBLE);
-
-                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            long voteCounts = (long) dataSnapshot.getValue();
-                            mDatabase.setValue(voteCounts + 1);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Toast.makeText(context,"Database Error", Toast.LENGTH_LONG).show();
-                        }
-                    });*/
-
                 }
             });
         }

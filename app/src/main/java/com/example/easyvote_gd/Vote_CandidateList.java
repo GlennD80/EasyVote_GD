@@ -30,14 +30,13 @@ public class Vote_CandidateList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_vote);
 
-/*      Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
         recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Profile>();
 
+        /**
+         * get candidate details from firebase ref
+         */
         reference = FirebaseDatabase.getInstance().getReference().child("Profiles");
         reference.addValueEventListener(new ValueEventListener() {
             @Override

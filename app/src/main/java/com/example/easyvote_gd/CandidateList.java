@@ -33,28 +33,30 @@ public class CandidateList extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //list view for
         listView = (ListView) findViewById(R.id.listView1);
         candidate = new Candidate();
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this, R.layout.candidate_info, R.id.candidateInfo, list);
 
+        //firebase ref for candidates in profiles table
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Profiles");
 
         ValueEventListener event = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         };
 
+
         reference.addListenerForSingleValueEvent(event);
 
+        //snapshot of candidate and list of candidates details
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

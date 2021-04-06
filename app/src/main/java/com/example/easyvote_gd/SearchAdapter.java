@@ -28,6 +28,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         TextView fullName_Search, address_Search, age_Search, email_Search;
         Button updateVoterDetailsBtn;
 
+        //search for
         public SearchViewHolder(@NonNull View itemView) {
             super(itemView);
             fullName_Search = (TextView) itemView.findViewById(R.id.fullName_Search);
@@ -37,6 +38,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             updateVoterDetailsBtn = (Button) itemView.findViewById(R.id.updateVoterDetailsBtn);
         }
 
+        //btn click
         public void onClick(int position) {
             updateVoterDetailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,6 +67,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         }
     }
 
+    //lists of all voter details in firebase
     public SearchAdapter(Context context, ArrayList<String> fullNameList, ArrayList<String> addressList, ArrayList<String> ageList, ArrayList<String> emailList,  ArrayList<String> uidList) {
         this.context = context;
         this.fullNameList = fullNameList;
@@ -74,12 +77,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         this.uidList = uidList;
     }
 
+    //
     @Override
     public SearchAdapter.SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.search_list_items, parent, false);
         return new SearchAdapter.SearchViewHolder(view);
     }
 
+    //
     @Override
     public void onBindViewHolder (SearchViewHolder holder, int position) {
         holder.fullName_Search.setText(" Name: " + fullNameList.get(position));

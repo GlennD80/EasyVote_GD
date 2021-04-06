@@ -39,7 +39,6 @@ public class UpdateCandidateList extends AppCompatActivity {
     int TAKE_IMAGE_CODE = 10001;
 
     DatabaseReference candidateRefFirebase;
-    DatabaseReference reference1;
     private String candidatePicUri;
 
     @Override
@@ -55,8 +54,10 @@ public class UpdateCandidateList extends AppCompatActivity {
         addNewCandidate = (Button) findViewById(R.id.add_Candidate_Btn);
         addCandidatePic = (ImageView) findViewById(R.id.imageCandidate);
 
+        //firebase ref to profiles table with candidate details
         candidateRefFirebase = FirebaseDatabase.getInstance().getReference().child("Profiles");
 
+        //btn click to add new candidate
         addNewCandidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +66,9 @@ public class UpdateCandidateList extends AppCompatActivity {
         });
     }
 
+    /**
+     * get current voter details and enter and add new details to firebase
+     */
     private void insertNewCandidate() {
 
         String name = addCandidateName.getText().toString().trim();
@@ -72,13 +76,13 @@ public class UpdateCandidateList extends AppCompatActivity {
         String location = addCandidateLocation.getText().toString().trim();
         String profilePic = candidatePicUri;
 
-
+        //add new candidate details and push to firebase
         NewCandidate newCandidate = new NewCandidate(name, party, location, profilePic);
         candidateRefFirebase.push().setValue(newCandidate);
 
-        //Toast.makeText(UpdateCandidateList.this, "New Candidate has been inserted", Toast.LENGTH_LONG).show();
     }
 
+    //btn click for camera option
     public void handleImageClick(View view) {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -87,6 +91,7 @@ public class UpdateCandidateList extends AppCompatActivity {
         }
     }
 
+    //image OK and set image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -107,14 +112,10 @@ public class UpdateCandidateList extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
+        //ref upload image to firebase path
         StorageReference storageRefImage = FirebaseStorage.getInstance().getReference().child("images/" + randomKey);
 
-/*        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        reference1 = FirebaseDatabase.getInstance().getReference().child("Profiles")
-                //.child(uid).push();
-                //.child("profilePic").push();
-                .child(uid).child("profilePic").push();*/
-
+        //image ref and upload
         storageRefImage.putBytes(baos.toByteArray())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -129,8 +130,7 @@ public class UpdateCandidateList extends AppCompatActivity {
                 });
     }
 
-
-
+    // add image and set uri - url details
     private void getDownloadUrl (StorageReference reference) {
         reference.getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -142,16 +142,16 @@ public class UpdateCandidateList extends AppCompatActivity {
                 });
     }
 
+    /**
+     * image added and validation
+     * @param uri
+     */
     private void setUserProfileUrI (Uri uri) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
-
-                //image url in firebase
                 .setPhotoUri(uri)
                 .build();
-
-
 
         user.updateProfile(request)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
