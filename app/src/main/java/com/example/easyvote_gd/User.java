@@ -15,7 +15,6 @@ public class User {
         this.fullName = fullName;
         this.admin = false;
         this.voted = false;
-
     }
 
     public String getFullName() { return fullName; }
@@ -38,20 +37,15 @@ public class User {
     public boolean isAdmin() {
         return admin;
     }
-
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
-
     public boolean isVoted() {
         return voted;
     }
-
     public void setVoted(boolean voted) {
         this.voted = voted;
     }
-
-    //public String getUid() { return uid; }
 }
 
 

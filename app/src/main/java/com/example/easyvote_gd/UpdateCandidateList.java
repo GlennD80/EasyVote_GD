@@ -60,6 +60,8 @@ public class UpdateCandidateList extends AppCompatActivity {
         //btn click to add new candidate
         addNewCandidate.setOnClickListener(new View.OnClickListener() {
             @Override
+
+            //run insert new candidate method from button click
             public void onClick(View v) {
                 insertNewCandidate();
             }
@@ -106,6 +108,7 @@ public class UpdateCandidateList extends AppCompatActivity {
         }
     }
 
+    //sting value the pseudo randomly generate uid for new candidate
     final String randomKey = UUID.randomUUID().toString();
 
     private void handleUpload(Bitmap bitmap) {
@@ -163,7 +166,7 @@ public class UpdateCandidateList extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(UpdateCandidateList.this, "Profile Image Fail", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UpdateCandidateList.this, "Profile update Fail", Toast.LENGTH_LONG).show();
                     }
                 });
 

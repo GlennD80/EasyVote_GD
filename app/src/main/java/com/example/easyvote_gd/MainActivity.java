@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * button click for main activity options
      * @param v
      */
-
     @Override
     public void onClick(View v) {
 

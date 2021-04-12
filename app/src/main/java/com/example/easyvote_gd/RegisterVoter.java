@@ -49,6 +49,7 @@ public class RegisterVoter extends AppCompatActivity implements View.OnClickList
 
     }
 
+    //easy vote banner navigate back to login menu
     @Override
         public void onClick(View v) {
             switch (v.getId()){
@@ -61,9 +62,12 @@ public class RegisterVoter extends AppCompatActivity implements View.OnClickList
             }
         }
 
+    /**
+     * register new voter
+     */
     private void registerUser() {
 
-        //input values for register user
+        //input values for register user fields
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullName.getText().toString().trim();

@@ -92,13 +92,16 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
 
        updateDet.setOnClickListener(this);
 
+       //delete voter based on uid value - get ref
         deleteVoterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //get firebase ref in users voter table by uid
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                 DatabaseReference deleteVoter = ref.child("Users").child(uid);
 
+                //remove the voter value from firebase
                 deleteVoter.removeValue();
                 Toast.makeText(UpdateVoterDetails.this, "Voter Deleted", Toast.LENGTH_SHORT).show();
             }
@@ -106,7 +109,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
     }
 
     /**
-     * update current voter details with new details
+     * validate input fields have a value
      */
     public void updateUser() {
 
@@ -133,19 +136,26 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         }
     }
 
-    //if name is changed - not changed return bool
+    /**
+     * if name is changed true - not changed return bool false
+     * @return
+     */
     private boolean isNameChanged() {
 
+        //firebase ref user table and voter uid
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         DatabaseReference newName = ref.child("Users").child(uid);
 
         String newFullName = newFullNameUpd.getText().toString().trim();
 
+        //check if current name is not same as new name
         if(!fullName.equals(newFullName)){
 
             newName.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    //set firebase name value with new value
                     dataSnapshot.getRef().child("fullName").setValue(newFullName);
                 }
 
@@ -159,19 +169,26 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         return false;
     }
 
-    //if address is changed - not changed return bool
+    /**
+     * if address is changed true - not changed return bool false
+     * @return
+     */
     private boolean isAddressChanged() {
 
+        //firebase ref user table and voter uid
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         DatabaseReference newAddressDB = ref.child("Users").child(uid);
 
         String newAddress = newAddressUpd.getText().toString().trim();
 
+        //check if current address is not same as new address
         if(!address.equals(newAddress)) {
 
             newAddressDB.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    //set firebase address value with new value
                     dataSnapshot.getRef().child("address").setValue(newAddress);
                 }
 
@@ -186,19 +203,26 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         return false;
     }
 
-    //if age is changed - not changed return bool
+    /**
+     * if age is changed true - not changed return bool false
+     * @return
+     */
     private boolean isAgeChanged() {
 
+        //firebase ref user table and voter uid
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         DatabaseReference newAgeDB = ref.child("Users").child(uid);
 
         String newAge = newAgeUpd.getText().toString().trim();
 
+        //check if current address is not same as new address
         if(!age.equals(newAge)) {
 
             newAgeDB.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    //set firebase age value with new value
                     dataSnapshot.getRef().child("age").setValue(newAge);
                 }
 
@@ -218,7 +242,11 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
         Boolean nameChanged = isNameChanged();
         Boolean addressChanged = isAddressChanged();
         Boolean ageChanged = isAgeChanged();
+
+        //update the voter user details method with button onlick
         updateUser();
+
+        //check returned bool of the voters input and existing details - display toast
         if(nameChanged || addressChanged || ageChanged) {
             Toast.makeText(UpdateVoterDetails.this, "Details have been updated", Toast.LENGTH_SHORT).show();
         } else {

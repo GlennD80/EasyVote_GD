@@ -17,23 +17,18 @@ public class User2 {
     public String getNewFullName() {
         return newFullName;
     }
-
     public void setNewFullName(String newFullName) {
         this.newFullName = newFullName;
     }
-
     public String getNewAddress() {
         return newAddress;
     }
-
     public void setNewAddress(String newAddress) {
         this.newAddress = newAddress;
     }
-
     public String getNewAge() {
         return newAge;
     }
-
     public void setNewAge(String newAge) {
         this.newAge = newAge;
     }

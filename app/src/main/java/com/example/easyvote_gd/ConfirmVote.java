@@ -37,9 +37,9 @@ public class ConfirmVote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_vote);
 
-        //logout for voter btn
         logout = (Button) findViewById(R.id.candidLogout);
 
+        //logout button for voter btn
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +54,8 @@ public class ConfirmVote extends AppCompatActivity {
          *
          * verify from firebase bool value
          */
+
+        //firebase ref voter users uid
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference1 = FirebaseDatabase.getInstance().getReference("Users");
@@ -65,7 +67,7 @@ public class ConfirmVote extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("voted").exists()) {
 
-                    //if true disable confirm btn
+                    //if voter has voter already by checking bool (true) disable confirm btn
                     Boolean voted = snapshot.child("voted").getValue().toString().equals("true");
                     if(voted) {
                         confirmVote.setVisibility(View.INVISIBLE);
@@ -125,6 +127,8 @@ public class ConfirmVote extends AppCompatActivity {
                         voteUpdate.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                //set the firebase value for voted true for voter
                                 dataSnapshot.getRef().child("voted").setValue(true);
                             }
 
@@ -136,6 +140,7 @@ public class ConfirmVote extends AppCompatActivity {
 
                         //disable confirm vote btn after vote selection
                         confirmVote.setVisibility(View.INVISIBLE);
+
                         Toast.makeText(ConfirmVote.this, "You have recorded your vote", Toast.LENGTH_SHORT).show();
                     }
 

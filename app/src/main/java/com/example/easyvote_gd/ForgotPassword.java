@@ -48,7 +48,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                 resetPassword();
             }
 
-            //validate field for email
+            //validate input field for email
             private void resetPassword() {
                 String email = emailEditText.getText().toString().trim();
 
@@ -68,7 +68,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                 auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        
+
                         if(task.isSuccessful()){
                             Toast.makeText(ForgotPassword.this, "Check your email account", Toast.LENGTH_SHORT).show();
                         } else {

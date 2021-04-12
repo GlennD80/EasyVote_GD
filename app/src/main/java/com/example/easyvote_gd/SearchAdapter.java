@@ -28,7 +28,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         TextView fullName_Search, address_Search, age_Search, email_Search;
         Button updateVoterDetailsBtn;
 
-        //search for
+        //search for data held the inflated views
         public SearchViewHolder(@NonNull View itemView) {
             super(itemView);
             fullName_Search = (TextView) itemView.findViewById(R.id.fullName_Search);
@@ -38,7 +38,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             updateVoterDetailsBtn = (Button) itemView.findViewById(R.id.updateVoterDetailsBtn);
         }
 
-        //btn click
+        //btn click - sends bundle of data to next activity
         public void onClick(int position) {
             updateVoterDetailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,14 +77,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         this.uidList = uidList;
     }
 
-    //
+    //group view and inflate the view holder
     @Override
     public SearchAdapter.SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.search_list_items, parent, false);
         return new SearchAdapter.SearchViewHolder(view);
     }
 
-    //
+    //binds the data to the view holder - name, address, age and email
     @Override
     public void onBindViewHolder (SearchViewHolder holder, int position) {
         holder.fullName_Search.setText(" Name: " + fullNameList.get(position));

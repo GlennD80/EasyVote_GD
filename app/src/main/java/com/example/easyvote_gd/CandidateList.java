@@ -60,7 +60,11 @@ public class CandidateList extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                //for loop to get all the candidates in profiles table
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                    //get candidate values and add to list
                     candidate = ds.getValue(Candidate.class);
                     list.add(candidate.getName().toString() + " " + "\n" + candidate.getParty().toString());
                 }

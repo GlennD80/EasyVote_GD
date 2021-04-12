@@ -43,7 +43,7 @@ public class AdminUserDetails extends AppCompatActivity {
             }
         });
 
-        //get user firebase reference
+        //get voter user firebase reference by uid
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -57,10 +57,12 @@ public class AdminUserDetails extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
 
+                //if admin voter details are not null display name and email
                 if(userProfile != null) {
                     String fullName = userProfile.fullName;
                     String email = userProfile.email;
 
+                    //set the admin user name and email values
                     fullNameTextView.setText(" " + fullName);
                     emailTextView.setText(" " + email);
                 }

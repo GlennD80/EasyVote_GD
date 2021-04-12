@@ -102,12 +102,18 @@ public class SearchVoterDetails extends AppCompatActivity {
         });
     }
 
+    /**
+     * search for a voter in firebase
+     * @param searchedString
+     */
     private void setAdapter(final String searchedString) {
 
+        //get firebase ref for the Users table
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                //clear the list
                 fullNameList.clear();
                 addressList.clear();
                 ageList.clear();
@@ -117,15 +123,17 @@ public class SearchVoterDetails extends AppCompatActivity {
 
                 int counter = 0;
 
+                //snapshot of data for fullname, address, age and email.
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    //String uid = snapshot.getKey();
                     String fullName = snapshot.child("fullName").getValue(String.class);
                     String address = snapshot.child("address").getValue(String.class);
                     String age = snapshot.child("age").getValue(String.class);
                     String email = snapshot.child("email").getValue(String.class);
 
+                    //snapshot value for voters uid.
                     String uid = snapshot.getKey();
 
+                    //search list based on voter fullname
                     if(fullName.toLowerCase().contains(searchedString.toLowerCase())){
                         fullNameList.add(fullName);
                         addressList.add(address);
@@ -133,6 +141,8 @@ public class SearchVoterDetails extends AppCompatActivity {
                         emailList.add(email);
                         uidList.add(uid);
                         counter++;
+
+                        //search list based on voter email
                     } else if (email.toLowerCase().contains(searchedString.toLowerCase())){
                         fullNameList.add(fullName);
                         addressList.add(address);
@@ -142,6 +152,7 @@ public class SearchVoterDetails extends AppCompatActivity {
                         counter++;
                     }
 
+                    //only add 15 to list
                     if(counter == 15)
                         break;
                 }

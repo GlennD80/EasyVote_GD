@@ -19,34 +19,25 @@ public class NewCandidate {
     }
 
     public String getCount() { return count; }
-
     public void setCount(String count) { this.count = count; }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getParty() {
         return party;
     }
-
     public void setParty(String party) {
         this.party = party;
     }
-
     public String getLocation() {
         return location;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
-
     public String getProfilePic() { return profilePic; }
-
     public void setProfilePic(String profilePic) { this.profilePic = profilePic; }
 }

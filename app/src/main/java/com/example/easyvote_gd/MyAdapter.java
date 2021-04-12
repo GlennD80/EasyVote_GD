@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,13 +45,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.voteview, parent, false));
     }
 
-    //get candidate details by position
+    //binds data to the views of the ViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name.setText(profiles.get(position).getName());
         holder.party.setText(profiles.get(position).getParty());
         holder.location.setText(profiles.get(position).getLocation());
-        holder.voteBtn.setText(profiles.get(position).getVoteBtn());
+        //holder.voteBtn.setText(profiles.get(position).getVoteBtn());
         holder.onClick(position);
 
         //image display
@@ -60,24 +61,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 .into(holder.profilePic);
     }
 
-
+    //get the profiles count from the firebase
     @Override
     public int getItemCount() { return profiles.size();
     }
 
+    //handles layout inflation and child view
     class MyViewHolder extends RecyclerView.ViewHolder
     {
         TextView name, party, location;
         ImageView profilePic;
-        Button voteBtn;
+        //Button voteBtn;
+        ImageButton voteBtn;
 
+        //set the items to be view in the ViewHolder
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.can_name);
             party = (TextView) itemView.findViewById(R.id.party);
             location = (TextView) itemView.findViewById(R.id.location);
             profilePic = (ImageView) itemView.findViewById(R.id.profilePic);
-            voteBtn = (Button) itemView.findViewById(R.id.voteBtn);
+            //voteBtn = (Button) itemView.findViewById(R.id.imageButton);
+            voteBtn = (ImageButton) itemView.findViewById(R.id.imageButton);
         }
 
         //btn click sends candidate details to next activity to confirm vote

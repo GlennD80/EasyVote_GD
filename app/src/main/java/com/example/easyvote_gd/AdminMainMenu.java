@@ -33,7 +33,6 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
      * @param
      */
 
-    //admin user logout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +43,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
 
         logoutAdmin = (Button) findViewById(R.id.logoutAdmin);
 
+        //logout admin user from activity/app
         logoutAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,9 +52,9 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //voter list menu
         voterList = (Button) findViewById(R.id.viewVotersList);
 
+        //navigate to voter list activity
         voterList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,9 +62,9 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //update voter details
         updateVoterDetails = (Button) findViewById(R.id.updateVoterDetails);
 
+        //navigate to search voter details activity
         updateVoterDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,9 +72,9 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //view candidate list
         candidateList = (Button) findViewById(R.id.viewCandidateList);
 
+        //navigate to candidate list activity
         candidateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,9 +82,9 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //update candidate list
         updateCandidateList = (Button) findViewById(R.id.updateCandidateList);
 
+        //navigate to update candidate list activity
         updateCandidateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,9 +92,9 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //view candidate vote results
         viewCandidateVotes = (Button) findViewById(R.id.candidateVotes);
 
+        //navigate to view candidate voters activity
         viewCandidateVotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +104,7 @@ public class AdminMainMenu extends AppCompatActivity implements View.OnClickList
 
     }
 
+    //easy vote banner navigate back
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
