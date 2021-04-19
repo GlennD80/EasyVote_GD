@@ -1,11 +1,9 @@
 # EasyVote_GD
-Final Project
+Final Project SDA Assignment 5
 
 *************
 Last Update April 2021.
 *************
-
-Sources Various:
 
 Github - GlennD80
 
@@ -31,4 +29,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Project Title: Final Project
+Project Title: Easy Vote
