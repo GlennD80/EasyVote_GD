@@ -66,7 +66,9 @@
             android:layout_height="68dp"
             android:clickable="true"
             android:background="#ECEFF1"
-            app:srcCompat="@drawable/confirmvote" />
+            app:srcCompat="@drawable/confirmvote"
+            android:contentDescription="@string/todo"
+            android:focusable="true" />
 
     </LinearLayout>
 

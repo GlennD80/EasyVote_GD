@@ -53,4 +53,7 @@
     <string name="update_vote_count">Update Vote Count</string>
     <string name="vote">Vote</string>
     <string name="delete_voter">Delete Voter</string>
+    <string name="register_voter">Register Voter</string>
+    <string name="address">Address</string>
+    <string name="addressA">Address:</string>
 </resources>
