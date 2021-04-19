@@ -49,6 +49,7 @@ public class Vote_CandidateList extends AppCompatActivity {
                     list.add(profile);
                 }
 
+                //takes the list and displays in recycler view
                 adapter = new MyAdapter(Vote_CandidateList.this, list);
                 recyclerView.setAdapter(adapter);
             }

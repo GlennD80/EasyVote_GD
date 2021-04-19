@@ -17,7 +17,6 @@ public class VoteCount {
     public int getVoteCount() {
         return voteCount;
     }
-
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }

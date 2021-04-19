@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\GD0122\\Desktop\\College\\Year 7\\SDA\\FinalProject\\App with SHA\\EasyVote_GD.jks')
+            storePassword 'Password1'
+            keyAlias 'key0'
+            keyPassword 'Password1'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -21,6 +29,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

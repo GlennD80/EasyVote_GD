@@ -39,6 +39,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         profiles = p;
     }
 
+    /**
+     * takes elements of list and display is each recycler view row - uses position
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -74,7 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         //Button voteBtn;
         ImageButton voteBtn;
 
-        //set the items to be view in the ViewHolder
+        //sets the items to be viewed in the ViewHolder
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.can_name);

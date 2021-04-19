@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +39,7 @@ public class VoterList extends AppCompatActivity {
         setContentView(R.layout.activity_voter_list);
 
         txtSearch = (AutoCompleteTextView) findViewById(R.id.searchList);
-        exportUserList = (Button) findViewById(R.id.exportList);
+        //exportUserList = (Button) findViewById(R.id.exportList);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -79,13 +80,11 @@ public class VoterList extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(VoterList.this, "Database Error", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     public void export (View view) {
-
     }
 }

@@ -23,6 +23,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     ArrayList<String> emailList;
     ArrayList<String> uidList;
 
+    /**
+     *
+     */
     class SearchViewHolder extends RecyclerView.ViewHolder {
 
         TextView fullName_Search, address_Search, age_Search, email_Search;

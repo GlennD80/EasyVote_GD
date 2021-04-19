@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -157,13 +158,14 @@ public class SearchVoterDetails extends AppCompatActivity {
                         break;
                 }
 
+                //takes the list and displays in the recycler view
                 searchAdapter = new SearchAdapter(SearchVoterDetails.this, fullNameList, addressList, ageList, emailList, uidList);
                 recyclerView.setAdapter(searchAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(SearchVoterDetails.this, "Database Error", Toast.LENGTH_LONG).show();
             }
         });
 

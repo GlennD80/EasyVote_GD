@@ -161,7 +161,7 @@ public class UpdateVoterDetails extends AppCompatActivity implements View.OnClic
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
+                    Toast.makeText(UpdateVoterDetails.this, "Database Error", Toast.LENGTH_LONG).show();
                 }
             });
             return true;

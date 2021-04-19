@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(MainActivity.this, "Database Error", Toast.LENGTH_LONG).show();
                             }
                         });
                     } else {

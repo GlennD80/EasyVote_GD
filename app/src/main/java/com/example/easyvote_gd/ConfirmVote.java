@@ -80,7 +80,7 @@ public class ConfirmVote extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(ConfirmVote.this, "Database Error", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -134,7 +134,7 @@ public class ConfirmVote extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-
+                                Toast.makeText(ConfirmVote.this, "Database Error", Toast.LENGTH_LONG).show();
                             }
                         });
 
