@@ -5,8 +5,20 @@ plugins {
 
 android {
     signingConfigs {
-        release {
+        release1 {
             storeFile file('C:\\Users\\GD0122\\Desktop\\College\\Year 7\\SDA\\FinalProject\\App with SHA\\EasyVote_GD.jks')
+            storePassword 'Password1'
+            keyAlias 'key0'
+            keyPassword 'Password1'
+        }
+        release11 {
+            storeFile file('C:\\Users\\GD0122\\Desktop\\College\\Year 7\\SDA\\FinalProject\\Easy Vote Final Project\\Final App with SHA1\\EasyVote.jks')
+            keyAlias 'key0'
+            storePassword 'Password1'
+            keyPassword 'Password1'
+        }
+        release {
+            storeFile file('C:\\Users\\GD0122\\Desktop\\College\\Year 7\\SDA\\FinalProject\\Easy Vote Final Project\\New Final App with SHA1\\EasyVote.jks')
             storePassword 'Password1'
             keyAlias 'key0'
             keyPassword 'Password1'

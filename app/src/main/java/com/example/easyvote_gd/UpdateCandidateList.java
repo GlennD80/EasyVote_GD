@@ -65,6 +65,7 @@ public class UpdateCandidateList extends AppCompatActivity {
             public void onClick(View v) {
                 insertNewCandidate();
             }
+
         });
     }
 
@@ -82,6 +83,7 @@ public class UpdateCandidateList extends AppCompatActivity {
         NewCandidate newCandidate = new NewCandidate(name, party, location, profilePic);
         candidateRefFirebase.push().setValue(newCandidate);
 
+        Toast.makeText(UpdateCandidateList.this, "Candidate updated Successfully", Toast.LENGTH_LONG).show();
     }
 
     //btn click for camera option
@@ -160,7 +162,7 @@ public class UpdateCandidateList extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(UpdateCandidateList.this, "Candidate updated Successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UpdateCandidateList.this, "Image added to database storage", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -169,6 +171,5 @@ public class UpdateCandidateList extends AppCompatActivity {
                         Toast.makeText(UpdateCandidateList.this, "Profile update Fail", Toast.LENGTH_LONG).show();
                     }
                 });
-
     }
 }
